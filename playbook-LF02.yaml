@@ -1,0 +1,15 @@
+---
+  - name: lineinfile02
+    hosts: web
+
+    tasks:
+      - name: "Agregar fila"
+        become: yes
+        become_user: root
+        tags: ejemplo02
+        lineinfile:
+          path: /etc/httpd/conf/httpd.conf
+          line: "#estoesuncomentario"
+          state: present
+          backup: yes
+        register: ejemplo02

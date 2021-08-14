@@ -1,0 +1,17 @@
+---
+  - name: lineinfile01
+    hosts: web
+
+    tasks:
+      - name: "Validar una fila"
+        become: yes
+        become_user: root
+        tags: ejemplo01
+        lineinfile:
+          path: /etc/httpd/conf/httpd.conf
+          regexp: "#estoesuncomentarioeditado"
+          line: "#estoesuncomentario"
+          state: present
+          backup: yes
+
+        register: ejemplo01
